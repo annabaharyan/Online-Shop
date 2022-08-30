@@ -1,0 +1,67 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 1rem;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  border: 1px solid #ffffff;
+  text-align: left;
+  padding: 8px;
+  font-size: 28px;
+}
+
+th {
+  background-color: rgb(188, 144, 246);
+  color: #ffffff;
+}
+
+td {
+  background-color: rgb(228, 213, 240);
+}
+h2{
+  text-align: center;
+}
+form {
+  display: flex;
+  width: 100%;
+  gap: 5px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+ 
+form td:last-child {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+form * {
+  font-size: 24px;
+}
+button{
+  background-color: rgb(188, 144, 246);
+  color: white;
+  border: 1px solid rgb(138, 81, 213);
+}
+.myActive{
+  border-bottom:2px solid rgb(138, 81, 213) ;
+}
+ul{
+  display: flex;
+  gap: 20px;
+}
+
+li{
+  list-style: none;
+  cursor: pointer;
+}
+.myActiveButton{
+  display: none;
+}
