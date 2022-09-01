@@ -71,14 +71,14 @@ function App() {
   ]
   let [items, setItems] = useState(products)
   let [defaultStatus, setdefaultStatus] = useState("progress");
-  let [newStatus, setNewStatus] = useState(defaultStatus)
+
 
   const changeStatusProg = (id) => {
-
+    console.log(id)
     let newObj = items.map(item => {
       if (item.id == id) {
-        setNewStatus("progress")
-        item.status = newStatus
+       
+        item.status = "progress"
       }
       return item
     })
@@ -86,11 +86,11 @@ function App() {
 
   }
   const changeStatusCanc = (id) => {
-
+    console.log(id)
     let newObj = items.map(item => {
       if (item.id == id) {
-        setNewStatus("cancel")
-        item.status = newStatus
+
+        item.status = "cancel"
       }
       return item
     })
@@ -101,8 +101,7 @@ function App() {
 
     let newObj = items.map(item => {
       if (item.id == id) {
-        setNewStatus("completed")
-        item.status = newStatus
+        item.status = "completed"
       }
       return item
     })
@@ -112,8 +111,8 @@ function App() {
 
     let newObj = items.map(item => {
       if (item.id == id) {
-        setNewStatus("reject")
-        item.status = newStatus
+       
+        item.status = "reject"
       }
       return item
     })
@@ -145,10 +144,10 @@ function App() {
                 <td>{item.name}</td>
                 <td>{item.status}</td>
                 <td>
-                  <button onClick={() => { changeStatusProg(item.id) }} className={defaultStatus == "progress" ? "myActiveButton" : ""}>Progress</button>
-                  <button onClick={() => { changeStatusComp(item.id) }} className={defaultStatus == "completed" ? "myActiveButton" : ""}>Completed</button>
-                  <button onClick={() => { changeStatusCanc(item.id) }} className={defaultStatus == "cancel" ? "myActiveButton" : ""}> Cancel</button>
-                  <button onClick={() => { changeStatusRej(item.id) }} className={defaultStatus == "reject" ? "myActiveButton" : ""}>Reject</button>
+                  <button onClick={() => changeStatusProg(item.id)} className={defaultStatus == "progress" ? "myActiveButton" : ""}>Progress</button>
+                  <button onClick={() => changeStatusComp(item.id)} className={defaultStatus == "completed" ? "myActiveButton" : ""}>Completed</button>
+                  <button onClick={() => changeStatusCanc(item.id)} className={defaultStatus == "cancel" ? "myActiveButton" : ""}> Cancel</button>
+                  <button onClick={() => changeStatusRej(item.id)} className={defaultStatus == "reject" ? "myActiveButton" : ""}>Reject</button>
                 </td>
 
               </tr>
