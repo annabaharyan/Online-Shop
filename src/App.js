@@ -1,6 +1,8 @@
 import { React, useState } from 'react';
 import './App.css';
-
+import UL from './components/ulComp';
+import Thead from './components/thead';
+import Tbody from './components/tbody';
 function App() {
   const products = [
     {
@@ -73,86 +75,19 @@ function App() {
   let [defaultStatus, setdefaultStatus] = useState("progress");
 
 
-  const changeStatusProg = (id) => {
-    console.log(id)
-    let newObj = items.map(item => {
-      if (item.id == id) {
-       
-        item.status = "progress"
-      }
-      return item
-    })
-    setItems(newObj)
-
-  }
-  const changeStatusCanc = (id) => {
-    console.log(id)
-    let newObj = items.map(item => {
-      if (item.id == id) {
-
-        item.status = "cancel"
-      }
-      return item
-    })
-    setItems(newObj)
-
-  }
-  const changeStatusComp = (id) => {
-
-    let newObj = items.map(item => {
-      if (item.id == id) {
-        item.status = "completed"
-      }
-      return item
-    })
-    setItems(newObj)
-  }
-  const changeStatusRej = (id) => {
-
-    let newObj = items.map(item => {
-      if (item.id == id) {
-       
-        item.status = "reject"
-      }
-      return item
-    })
-    setItems(newObj)
-
-  }
   return (
     <>
-      <ul>
-        <li className={defaultStatus == "progress" ? "myActive" : ""} onClick={() => setdefaultStatus("progress")}>Progress</li>
-        <li className={defaultStatus == "completed" ? "myActive" : ""} onClick={() => setdefaultStatus("completed")}>Completed</li>
-        <li className={defaultStatus == "cancel" ? "myActive" : ""} onClick={() => setdefaultStatus("cancel")}>Cancel</li>
-        <li className={defaultStatus == "reject" ? "myActive" : ""} onClick={() => setdefaultStatus("reject")}>Reject</li>
-      </ul>
+      <UL defStat={defaultStatus} setDefStat={function (res) {
+        setdefaultStatus(res)
+      }} />
       <table>
         <thead>
-          <tr>
-            <th>ID</th>
-            <th>NAME</th>
-            <th>STATUS</th>
-            <th>CONFIG</th>
-          </tr>
+          <Thead />
         </thead>
         <tbody>
-          {
-            items.filter(item => item.status == defaultStatus).map(item => (
-              <tr key={item.id}>
-                <td>{item.id}</td>
-                <td>{item.name}</td>
-                <td>{item.status}</td>
-                <td>
-                  <button onClick={() => changeStatusProg(item.id)} className={defaultStatus == "progress" ? "myActiveButton" : ""}>Progress</button>
-                  <button onClick={() => changeStatusComp(item.id)} className={defaultStatus == "completed" ? "myActiveButton" : ""}>Completed</button>
-                  <button onClick={() => changeStatusCanc(item.id)} className={defaultStatus == "cancel" ? "myActiveButton" : ""}> Cancel</button>
-                  <button onClick={() => changeStatusRej(item.id)} className={defaultStatus == "reject" ? "myActiveButton" : ""}>Reject</button>
-                </td>
-
-              </tr>
-            ))
-          }
+          <Tbody productArr={items} status={defaultStatus} setStatus={function (res) {
+            setdefaultStatus(res)
+          }} />
         </tbody>
 
       </table>
